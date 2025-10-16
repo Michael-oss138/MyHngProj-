@@ -9,7 +9,7 @@ import requests
 def me(request):
     try:
         req = requests.get("https://catfact.ninja/fact", timeout=5)
-        res = raise_for_status()
+        res.raise_for_status()
         fact = res.json().get("facts", "Cats are lovely creatures")
     except Exception:
         fact = "failed to get cat fact."
