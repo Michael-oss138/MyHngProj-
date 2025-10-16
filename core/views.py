@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.decorators immport api_view
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from datetime import datetime, timezone
 import requests
@@ -10,8 +10,8 @@ def me(request):
     try:
         req = requests.get("https://catfact.ninja/fact", timeout=5)
         res = raise_for_status()
-        fact = res.json().get("facts": "Cats are lovely creatures")
-    exception:
+        fact = res.json().get("facts", "Cats are lovely creatures")
+    except Exception:
         fact = "failed to get cat fact."
 
     data ={
