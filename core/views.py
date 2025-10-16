@@ -10,4 +10,20 @@ def me(request):
     try:
         req = requests.get("https://catfact.ninja/fact", timeout=5)
         res = raise_for_status()
-        fact = res.json().get()
+        fact = res.json().get("facts": "Cats are lovely creatures")
+    exception:
+        fact = "failed to get cat fact."
+
+    data ={
+        "status": "success",
+        user: {
+            "name": "Nwaizu Michael",
+            "email": "nwaizumichael0@gmail.com",
+            "stack": "Python/Django"
+        },
+        timestamp: datetime.now(tz=timezone.utc).isoformat(),
+        "fact": fact
+    }
+
+    return Response(data)
+
