@@ -8,20 +8,20 @@ import requests
 @api_view(['GET'])
 def me(request):
     try:
-        req = requests.get("https://catfact.ninja/fact", timeout=5)
+        res = requests.get("https://catfact.ninja/fact", timeout=5)
         res.raise_for_status()
-        fact = res.json().get("facts", "Cats are lovely creatures")
+        fact = res.json().get("fact", "Cats are lovely creatures")
     except Exception:
         fact = "failed to get cat fact."
 
     data ={
         "status": "success",
-        user: {
+        "user": {
             "name": "Nwaizu Michael",
             "email": "nwaizumichael0@gmail.com",
             "stack": "Python/Django"
         },
-        timestamp: datetime.now(tz=timezone.utc).isoformat(),
+        "timestamp": datetime.utcnow().isoformat() + "Z",
         "fact": fact
     }
 
